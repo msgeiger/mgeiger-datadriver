@@ -1,6 +1,7 @@
 mgeiger-datadriver
 
-Inspired and expanded from https://github.com/marook/db-fitnesse
-transitioned from fit to slim
+Inspired and modified from https://github.com/marook/db-fitnesse.
+
+Added Date data fixture and transitioned package from FIT to SLIM.
 
 
