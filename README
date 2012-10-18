@@ -1,7 +1,7 @@
 mgeiger-datadriver
 
-Inspired and modified from https://github.com/marook/db-fitnesse.
+Inspired/taken from Marook's https://github.com/marook/db-fitnesse.
 
-Added Date data fixture and transitioned package from FIT to SLIM.
+Added Date data fixture to fetch dates in the past or dates in the future for tests based on the current date and time. Transitioned package from FIT to SLIM.
 
 
