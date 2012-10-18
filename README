@@ -10,8 +10,25 @@ Example of Date Fixture usage in Xebium test:
 |import|
 |com.mgeiger.datadriver|
 
+# Date Data Fixture
+
 !|Date Data Fixture                                             |
 |increment month|show month?|show day?|minute divisible by five?|
 |3              |$MONTH=    |$DAY=    |$MINUTE_ROUNDED_UP=      |
+
+# Query Runner Fixture
+
+|DB Connection                                                                                              |
+|db driver                      |db connect                             |user       |password  |get connect?|
+|oracle.jdbc.driver.OracleDriver|jdbc:oracle:thin:@<DB_URL>:<PORT>:<SID>|<USER_NAME>|<PASSWORD>|true        |
+
+|Query Runner Fixture                                                   |
+|sql                                        |column  |run query get int?|
+|SELECT INT FROM TABLE WHERE WHERE INT = INT|<COLUMN>|$INT_OUTPUT=      |
+
+
+|Query Runner Fixture                                                         |
+|sql                                           |column  |run query get string?|
+|SELECT STRING FROM TABLE WHERE STRING = STRING|<COLUMN>|$STRING_OUTPUT=      |
 
 
