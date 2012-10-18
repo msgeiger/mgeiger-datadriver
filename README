@@ -35,4 +35,32 @@ Examples of Date Data Fixture and Database Query Fixture usage in Xebium test:
 |sql                                           |column  |run query get string?|
 |SELECT STRING FROM TABLE WHERE STRING = STRING|<COLUMN>|$STRING_OUTPUT=      |
 
+Installation:
 
+1. git clone git://github.com/xebia/Xebium
+
+2. git clone git://github.com/msgeiger/mgeiger-datadriver.git
+
+3. cd <into mgeiger-datadriver dir>
+
+4. From the command line run mvn clean install
+
+5. run mvn package
+
+6. Copy the mgeiger-datadriver/src/main/java/com/geiger directory to the Xebium/src/main/java/com directory
+
+7. Add oracle jdbc dependency to the Xebium package and Xebium pom.xml file
+
+    <dependency>
+      <groupId>com.oracle</groupId>
+      <artifactId>ojdbc6</artifactId>
+      <version>11.2.0</version>
+      <scope>system</scope>
+      <systemPath>${<path to oracle jdbc dir>}/ojdbc6.jar</systemPath>
+    </dependency>
+
+8. cd into Xebium
+
+9. run maven clean install
+
+10. run mvn -Pfitnesse test
