@@ -107,7 +107,7 @@ public class DateDataFixture {
         }
 
         String min;
-        if (minute == 60){
+        if (minute == 60) {
             min = "00";
         } else if (minute < 10) {
             min = "0" + minute;
@@ -132,5 +132,4 @@ public class DateDataFixture {
 
         return format;
     }
-    
 }
