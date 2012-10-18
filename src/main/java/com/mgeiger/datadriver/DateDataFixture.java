@@ -106,12 +106,10 @@ public class DateDataFixture {
             minute = (minute / 5) * 5 + 5;
         }
 
-        if (minute == 60) {
-            minute = 0;
-        }
-
         String min;
-        if ((minute < 10)) {
+        if (minute == 60){
+            min = "00";
+        } else if (minute < 10) {
             min = "0" + minute;
         } else {
             min = Integer.toString(minute, 10);
