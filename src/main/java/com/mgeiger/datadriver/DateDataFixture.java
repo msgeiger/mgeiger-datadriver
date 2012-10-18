@@ -104,7 +104,9 @@ public class DateDataFixture {
 
         if ((minute % 5) > 0) {
             minute = (minute / 5) * 5 + 5;
-        } else if (minute == 60) {
+        }
+
+        if (minute == 60) {
             minute = 0;
         }
 
