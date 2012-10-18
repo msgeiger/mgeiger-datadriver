@@ -71,5 +71,4 @@ public class QueryRunnerFixture {
             c.close();
         }
     }
-    
 }
