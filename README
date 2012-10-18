@@ -5,4 +5,13 @@ Inspired/taken from Marook's https://github.com/marook/db-fitnesse.
 Added Calendar Date data fixture to fetch dates in the past or dates in the future based on the current Calendar date.
 Transitioned original db-fitnesse package from FIT to SLIM.
 
+Example of Date Fixture usage in Xebium test:
+
+|import|
+|com.mgeiger.datadriver|
+
+!|Date Data Fixture                                             |
+|increment month|show month?|show day?|minute divisible by five?|
+|3              |$MONTH=    |$DAY=    |$MINUTE_ROUNDED_UP=      |
+
 
