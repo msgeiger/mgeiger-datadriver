@@ -41,7 +41,7 @@ public class DBConnection {
     public void setPassword(String password) {
         this.password = password;
     }
-    
+
     public String getDbDriver() {
         return this.dbDriver;
     }
@@ -57,13 +57,13 @@ public class DBConnection {
     public String getPassword() {
         return this.password;
     }
-    
-    public boolean getConnect(){
+
+    public boolean getConnect() {
         DBConnection.getInstance().setDbDriver(dbDriver);
         DBConnection.getInstance().setDbConnect(dbConnect);
         DBConnection.getInstance().setUser(user);
         DBConnection.getInstance().setPassword(password);
-        
+
         return true;
     }
 
