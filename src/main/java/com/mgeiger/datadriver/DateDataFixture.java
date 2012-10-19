@@ -69,7 +69,7 @@ public class DateDataFixture {
         return incrementMinute;
     }
 
-    public String showYear() {
+    public String echoYear() {
         DateFormat dateFormat = new SimpleDateFormat("yyyy");
         Calendar cal = Calendar.getInstance(Locale.ENGLISH);
         cal.setTime(cal.getTime());
@@ -79,7 +79,7 @@ public class DateDataFixture {
         return format;
     }
 
-    public String showMonth() {
+    public String echoMonth() {
         DateFormat dateFormat = new SimpleDateFormat("MM");
         Calendar cal = Calendar.getInstance(Locale.ENGLISH);
         cal.setTime(cal.getTime());
@@ -89,7 +89,7 @@ public class DateDataFixture {
         return format;
     }
 
-    public String showDay() {
+    public String echoDay() {
         DateFormat dateFormat = new SimpleDateFormat("dd");
         Calendar cal = Calendar.getInstance(Locale.ENGLISH);
         cal.setTime(cal.getTime());
@@ -122,7 +122,7 @@ public class DateDataFixture {
         return ((Integer.parseInt(this.minuteDivisibleByFive()) % 5) == 0) ? "PASS" : "FAIL";
     }
 
-    public String incrementDate() {
+    public String echoDate() {
         DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
         //get current date time with Calendar()
         Calendar cal = Calendar.getInstance(Locale.ENGLISH);
