@@ -61,9 +61,17 @@ Installation:
 
 5. run mvn package
 
-6. Copy the mgeiger-datadriver/src/main/java/com/geiger directory to the Xebium/src/main/java/com directory
+6. Copy the mgeiger-datadriver/src/main/java/com/geiger directory to the Xebium/src/main/java/com directory, or,
+   add dependency to Xebium/pom.xml.
 
-7. Add oracle jdbc dependency to the Xebium package and Xebium pom.xml file
+    <dependency>
+      <groupId>com.mgeiger.datadriver</groupId>
+      <artifactId>mgeiger-datadriver</artifactId>
+      <version>1.0-SNAPSHOT</version>
+      <scope>runtime</scope>
+    </dependency>
+
+7. Add oracle jdbc dependency to the Xebium package and Xebium/pom.xml file
 
     <dependency>
       <groupId>com.oracle</groupId>
