@@ -7,7 +7,7 @@ mgeiger-datadriver
 Added Calendar Date data fixture to fetch dates in the past or dates in the future based on the current Calendar date.
 Transitioned original db-fitnesse package from FIT to SLIM.
 
-Examples of Date Data Fixture and Database Query Fixture usage with Xebium:
+Examples of Date Data Fixture and Database Query Runner Fixture usage with Xebium:
 
 |import|
 |com.mgeiger.datadriver|
