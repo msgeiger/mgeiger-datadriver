@@ -1,6 +1,8 @@
 mgeiger-datadriver
 
-Inspired/taken from Marook's https://github.com/marook/db-fitnesse.
+------------------------------------------------------------------------------
+# CREDITS: Inspired/taken from Marook's https://github.com/marook/db-fitnesse.
+------------------------------------------------------------------------------
 
 Added Calendar Date data fixture to fetch dates in the past or dates in the future based on the current Calendar date.
 Transitioned original db-fitnesse package from FIT to SLIM.
