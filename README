@@ -14,9 +14,25 @@ Examples of Date Data Fixture and Database Query Fixture usage in Xebium test:
 # Date Data Fixture
 ---------------------------------------------
 
-!|Date Data Fixture                                             |
-|increment month|show month?|show day?|minute divisible by five?|
-|3              |$MONTH=    |$DAY=    |$MINUTE_ROUNDED_UP=      |
+|Date Data Fixture                                                |
+|increment day|echo date?  |echo month?  |echo day?  |echo year?  |
+|-30          |$DATESTRING=|$MONTHSTRING=|$DAYSTRING=|$YEARSTRING=|
+
+|Date Data Fixture        |
+|minute divisible by five?|
+|$MINUTESTRING=           |
+
+!|script|Date Data Fixture|
+
+!|scenario|Check date fixture                      |
+|check    |verify is divisible by five|PASS        |
+|check    |echo month                 |$MONTHSTRING|
+|check    |echo day                   |$DAYSTRING  |
+|check    |echo year                  |$YEARSTRING |
+
+![ script
+ Check date fixture
+]!
 
 ---------------------------------------------
 # Query Runner Fixture
