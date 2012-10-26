@@ -22,9 +22,7 @@ public class DateDataFixture {
     private int incrementMinute;
 
     public static DateDataFixture getInstance() {
-        if (INSTANCE == null) {
-            INSTANCE = new DateDataFixture();
-        }
+        INSTANCE = (INSTANCE == null) ? new DateDataFixture() : INSTANCE;
 
         return INSTANCE;
     }
@@ -67,6 +65,15 @@ public class DateDataFixture {
 
     public int getIncrementMinute() {
         return incrementMinute;
+    }
+    
+    public Long getTimeStamp(){        
+        Long currentTimestamp = (System.currentTimeMillis()/1000);
+        return currentTimestamp;      
+    }
+    
+    public String echoTimestamp() {
+        return this.getTimeStamp().toString();
     }
 
     public String echoYear() {
