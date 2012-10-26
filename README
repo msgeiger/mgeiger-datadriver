@@ -16,9 +16,9 @@ Examples of Date Data Fixture and Database Query Runner Fixture usage with Xebiu
 # Date Data Fixture
 ---------------------------------------------
 
-|Date Data Fixture                                                |
-|increment day|echo date?  |echo month?  |echo day?  |echo year?  |
-|-30          |$DATESTRING=|$MONTHSTRING=|$DAYSTRING=|$YEARSTRING=|
+|Date Data Fixture                                                                |
+|increment day|echo date?  |echo month?  |echo day?  |echo year?  |echo timestamp?|
+|-30          |$DATESTRING=|$MONTHSTRING=|$DAYSTRING=|$YEARSTRING=|$TIMESTAMP=    |
 
 |Date Data Fixture        |
 |minute divisible by five?|
@@ -29,6 +29,7 @@ Examples of Date Data Fixture and Database Query Runner Fixture usage with Xebiu
 |check    |echo month                 |$MONTHSTRING|
 |check    |echo day                   |$DAYSTRING  |
 |check    |echo year                  |$YEARSTRING |
+|check    |echo timestamp             |$TIMESTAMP  |
 
 ![ script
  Check date fixture
