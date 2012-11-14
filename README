@@ -90,8 +90,7 @@ Installation:
 
 10. run mvn -Pfitnesse test
 
-# NOTE: In order to use the Oracle Drivers with the latest version of Xebium, I added the following pieces
-to the pom.xml file:
+# NOTE: In order to use the Oracle Drivers with the latest version of Xebium, I removed the dependency with system scope and I included the following pieces in the pom.xml file:
 
     <repositories>
         <repository>
@@ -106,5 +105,5 @@ to the pom.xml file:
         <version>11.2.0</version>
      </dependency>
 
-Then I added the jar in the local ivy repository.
+Then I added the ojdbc.jar in the local ivy repository.
 
