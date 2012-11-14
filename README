@@ -89,3 +89,22 @@ Installation:
 9. run maven clean install
 
 10. run mvn -Pfitnesse test
+
+# NOTE: In order to use the Oracle Drivers with the latest version of Xebium, I added the following pieces
+to the pom.xml file:
+
+    <repositories>
+        <repository>
+            <id>com.oracle</id>
+            <url>file://${java.home}<PATH TO ojdbc.jar FILE></url>
+        </repository>
+    </repositories>
+
+    <dependency>
+        <groupId>com.oracle</groupId>
+        <artifactId>ojdbc6</artifactId>
+        <version>11.2.0</version>
+     </dependency>
+
+Then I added the jar in the local ivy repository.
+
