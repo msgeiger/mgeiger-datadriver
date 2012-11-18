@@ -107,3 +107,4 @@ Installation:
 
 Then I added the ojdbc.jar in the local ivy repository.
 
+Created XmlParser to set Database Connection variables in a XML file rather than in a script table or fixture.
