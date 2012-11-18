@@ -31,7 +31,7 @@ public class DBConnection {
         return parseXmlValues;
     }
         
-    public void setParseValues(boolean answer) {
+    public void setParseXmlValues(boolean answer) {
         parseXmlValues = answer;
     }
 
