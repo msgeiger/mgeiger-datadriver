@@ -27,8 +27,8 @@ public class DBConnection {
         return INSTANCE;
     }
  
-    public String getParseXmlValues() {
-        return password;
+    public boolean getParseXmlValues() {
+        return parseXmlValues;
     }
         
     public void setParseValues(boolean answer) {
