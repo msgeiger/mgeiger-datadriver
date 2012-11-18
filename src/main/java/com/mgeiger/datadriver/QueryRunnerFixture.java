@@ -107,7 +107,7 @@ public class QueryRunnerFixture {
             while (results.next()) {
                 List nrow = new ArrayList();
                 
-                for (int i = 1; i <= numberOfColumns; i++) //replace 3 with the length of the columns
+                for (int i = 1; i <= numberOfColumns; i++) 
                 {
                     nrow.add(results.getObject(i));
                 }
