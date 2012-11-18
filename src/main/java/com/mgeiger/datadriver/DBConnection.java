@@ -12,6 +12,7 @@ import java.sql.SQLException;
  */
 public class DBConnection {
 
+    private boolean parseXmlValues = false;
     private String dbDriver;
     private String dbConnect;
     private String user;
@@ -25,40 +26,49 @@ public class DBConnection {
 
         return INSTANCE;
     }
-
-    public void setDbDriver(String dbDriver) {
-        this.dbDriver = dbDriver;
+ 
+    public String getParseXmlValues() {
+        return password;
+    }
+        
+    public void setParseValues(boolean answer) {
+        parseXmlValues = answer;
     }
 
-    public void setDbConnect(String dbConnect) {
-        this.dbConnect = dbConnect;
+    public void setDbDriver(String dbDriverString) {
+        dbDriver = dbDriverString;
     }
 
-    public void setUser(String user) {
-        this.user = user;
+    public void setDbConnect(String dbConnectString) {
+        dbConnect = dbConnectString;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setUser(String userString) {
+        user = userString;
+    }
+
+    public void setPassword(String passwordString) {
+        password = passwordString;
     }
 
     public String getDbDriver() {
-        return this.dbDriver;
+        return dbDriver;
     }
 
     public String getDbConnect() {
-        return this.dbConnect;
+        return dbConnect;
     }
 
     public String getUser() {
-        return this.user;
+        return user;
     }
 
     public String getPassword() {
-        return this.password;
+        return password;
     }
 
     public boolean getConnect() {
+
         DBConnection.getInstance().setDbDriver(dbDriver);
         DBConnection.getInstance().setDbConnect(dbConnect);
         DBConnection.getInstance().setUser(user);
