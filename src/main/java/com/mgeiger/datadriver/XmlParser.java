@@ -2,6 +2,7 @@ package com.mgeiger.datadriver;
 
 import java.io.File;
 import java.io.IOException;
+import java.sql.Connection;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.xml.parsers.DocumentBuilder;
@@ -38,6 +39,7 @@ public class XmlParser {
         DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
         DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
         Document doc = null;
+
         try {
             doc = dBuilder.parse(fXmlFile);
         } catch (SAXException ex) {
@@ -53,6 +55,7 @@ public class XmlParser {
     public static boolean useParser() {
         boolean use_parser = false;
         Document doc = null;
+
         try {
             doc = XmlParser.setDocumentParameters();
         } catch (ParserConfigurationException ex) {
@@ -60,7 +63,7 @@ public class XmlParser {
         }
         // System.out.println("Root element :" + doc.getDocumentElement().getNodeName());
         NodeList nList = doc.getElementsByTagName("use_parser");
-        System.out.println("-----------------------");
+        //System.out.println("-----------------------");
 
         for (int temp = 0; temp < nList.getLength(); temp++) {
 
@@ -69,7 +72,7 @@ public class XmlParser {
 
                 Element eElement = (Element) nNode;
                 String answer = getTagValue("parser", eElement);
-                use_parser = answer == "true" ? true : false;
+                use_parser = "true".equals(answer) ? true : false;
             }
 
         }
@@ -77,23 +80,23 @@ public class XmlParser {
         return use_parser;
     }
 
-    public static void getMappedDbConfigurationConnection() {
-
+    public static Connection getMappedDbConfigurationConnection() {
         String db_user = null;
         String db_password = null;
         String db_connect = null;
         String db_driver = null;
+        Connection db_instance = null;
 
         try {
 
             Document doc = XmlParser.setDocumentParameters();
             // System.out.println("Root element :" + doc.getDocumentElement().getNodeName());
             NodeList nList = doc.getElementsByTagName("database");
-            System.out.println("-----------------------");
+            //System.out.println("-----------------------");
 
             for (int temp = 0; temp < nList.getLength(); temp++) {
-
                 Node nNode = nList.item(temp);
+
                 if (nNode.getNodeType() == Node.ELEMENT_NODE) {
 
                     Element eElement = (Element) nNode;
@@ -112,10 +115,12 @@ public class XmlParser {
             c.setDbConnect(db_connect);
             c.setDbDriver(db_driver);
             c.getConnect();
+            db_instance = DBConnection.getDBConnection();
 
         } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         }
 
+        return db_instance;
     }
 }

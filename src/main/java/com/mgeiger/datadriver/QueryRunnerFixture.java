@@ -6,7 +6,6 @@ package com.mgeiger.datadriver;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -19,71 +18,95 @@ public class QueryRunnerFixture {
     private String sql;
     private String column; // Single DB column in query e.g. select <column> from table
     private int numberOfColumns;
-
-    public void setSql(final String sql) {
-        this.sql = sql;
+    private static boolean mapXmlParameters;
+    private static Connection dbConnectionInstance;
+    
+    public static void QueryRunnerFixture() {
+        QueryRunnerFixture.setMapXmlParameters();
+        dbConnectionInstance = QueryRunnerFixture.connectToDatabase();
+    }
+    
+    public void setSql(final String sqlString) {
+        sql = sqlString;
     }
 
-    public void setColumn(String column) {
-        this.column = column;
+    public void setColumn(String columnString) {
+        column = columnString;
     }
 
-    public void setNumberOfColumns(final int count) {
-        this.numberOfColumns = count;
+    public void setNumberOfColumns(final int countInt) {
+        numberOfColumns = countInt;
     }
 
     public int getNumberOfColumns() {
-        return this.numberOfColumns;
+        return numberOfColumns;
+    }
+    
+    public static void setMapXmlParameters() {
+        mapXmlParameters = XmlParser.useParser();
+    }
+    
+    public static boolean getMapXmlParameters() {
+        return mapXmlParameters;
+    }
+    
+    public static Connection connectToDatabase() {
+        final Connection con;
+        
+        if(QueryRunnerFixture.mapXmlParameters == true) {
+            con = XmlParser.getMappedDbConfigurationConnection();
+        } else {
+            con = DBConnection.getDBConnection();
+        }
+        
+        return con;
     }
 
-    public int runQueryGetInt() throws SQLException {
-        final Connection c = DBConnection.getDBConnection();
-
+    public int runQueryGetInt() throws SQLException {   
         try {
-            final PreparedStatement s = c.prepareStatement(sql);
+            final PreparedStatement s = dbConnectionInstance.prepareStatement(sql);
             final ResultSet result = s.executeQuery();
+            
             if (!result.next()) {
                 throw new IllegalStateException("Query must return at lease one row!");
             }
 
             return result.getInt(column);
         } finally {
-            c.close();
+            dbConnectionInstance.close();
         }
     }
 
-    public String runQueryGetString() throws SQLException {
-        final Connection c = DBConnection.getDBConnection();
-
+    public String runQueryGetString() throws SQLException {     
         try {
-            final PreparedStatement s = c.prepareStatement(sql);
+            final PreparedStatement s = dbConnectionInstance.prepareStatement(sql);
             final ResultSet result = s.executeQuery();
+            
             if (!result.next()) {
                 throw new IllegalStateException("Query must return at lease one row!");
             }
 
             return result.getString(column);
         } finally {
-            c.close();
+            dbConnectionInstance.close();
         }
     }
 
     public List runQueryGetResults() throws SQLException {
-        final Connection c = DBConnection.getDBConnection();
-        List resultsList = new ArrayList();
-
         try {
-            final PreparedStatement s = c.prepareStatement(sql);
+            final PreparedStatement s = dbConnectionInstance.prepareStatement(sql);
             final ResultSet results = s.executeQuery();
+            
             if (!results.next()) {
                 throw new IllegalStateException("Query must return at lease one row!");
             }
 
-            ResultSetMetaData metaData = results.getMetaData();
             List rows = new ArrayList();
             int cnt = 0;
+            
             while (results.next()) {
                 List nrow = new ArrayList();
+                
                 for (int i = 1; i <= numberOfColumns; i++) //replace 3 with the length of the columns
                 {
                     nrow.add(results.getObject(i));
@@ -94,16 +117,15 @@ public class QueryRunnerFixture {
 
             return rows;
         } finally {
-            c.close();
+            dbConnectionInstance.close();
         }
     }
 
     public int runQueryUpdate() throws SQLException {
-        final Connection c = DBConnection.getDBConnection();
-
         try {
-            final PreparedStatement s = c.prepareStatement(sql);
+            final PreparedStatement s = dbConnectionInstance.prepareStatement(sql);
             int n = s.executeUpdate();
+            
             if (n < 1) {
                 throw new IllegalStateException("Update failed!");
             } else {
@@ -111,7 +133,7 @@ public class QueryRunnerFixture {
                 return n;
             }
         } finally {
-            c.close();
+            dbConnectionInstance.close();
         }
     }
 }
