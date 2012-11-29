@@ -112,4 +112,5 @@ public class XmlParser {
             Logger.getLogger(XmlParser.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
 }
