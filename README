@@ -24,16 +24,9 @@ Examples of Date Data Fixture and Database Query Runner Fixture usage with Xebiu
 |minute divisible by five?|
 |$MINUTESTRING=           |
 
-!|scenario|Check date fixture                      |
-|check    |verify is divisible by five|PASS        |
-|check    |echo month                 |$MONTHSTRING|
-|check    |echo day                   |$DAYSTRING  |
-|check    |echo year                  |$YEARSTRING |
-|check    |echo timestamp             |$TIMESTAMP  |
-
-![ script
- Check date fixture
-]!
+|Date Data Fixture                                                    |
+|verify is divisible by five?|echo month? |echo year? |echo timestamp?|
+|PASS                        |$MONTHSTRING|$YEARSTRING|>=$TIMESTAMP   |
 
 ---------------------------------------------
 # Query Runner Fixture
