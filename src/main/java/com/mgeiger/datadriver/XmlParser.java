@@ -15,13 +15,11 @@ import org.xml.sax.SAXException;
 
 public class XmlParser {
     
-    private static String workingDir = System.getProperty("user.dir").concat("\\config\\config.xml");
-
-    private static String pathToConfig = workingDir;
+    private static String pathToConfig = System.getProperty("user.dir").concat("\\config\\config.xml");
     //private static String pathToConfig = "c:\\Xebium\\config\\config.xml";
 
     public static void setPathToConfig(String pathToConfigString) {
-        pathToConfig = pathToConfigString;
+        pathToConfig = pathToConfigString.isEmpty() ? System.getProperty("user.dir").concat("\\config\\config.xml") : pathToConfigString;
     }
 
     public static String getPathToConfig() {
@@ -37,7 +35,7 @@ public class XmlParser {
     }
 
     public static Document setDocumentParameters() throws ParserConfigurationException {
-        File fXmlFile = new File(pathToConfig);
+        File fXmlFile = new File(XmlParser.getPathToConfig());
         DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
         DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
         Document doc = null;
