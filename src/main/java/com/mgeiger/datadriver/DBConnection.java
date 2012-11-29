@@ -26,11 +26,7 @@ public class DBConnection {
 
         return INSTANCE;
     }
- 
-    public boolean getParseXmlValues() {
-        return parseXmlValues;
-    }
-        
+
     public void setParseXmlValues(boolean answer) {
         parseXmlValues = answer;
     }
@@ -51,6 +47,10 @@ public class DBConnection {
         password = passwordString;
     }
 
+    public boolean getParseXmlValues() {
+        return parseXmlValues;
+    }
+
     public String getDbDriver() {
         return dbDriver;
     }
@@ -68,7 +68,6 @@ public class DBConnection {
     }
 
     public boolean getConnect() {
-
         DBConnection.getInstance().setDbDriver(dbDriver);
         DBConnection.getInstance().setDbConnect(dbConnect);
         DBConnection.getInstance().setUser(user);
@@ -83,14 +82,14 @@ public class DBConnection {
         try {
             Class.forName(DBConnection.getInstance().dbDriver);
         } catch (ClassNotFoundException e) {
-            System.out.println(e.getMessage());
+            e.printStackTrace();
         }
 
         try {
             con = DriverManager.getConnection(
                     DBConnection.getInstance().getDbConnect(), DBConnection.getInstance().getUser(), DBConnection.getInstance().getPassword());
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            e.printStackTrace();
         }
 
         return con;
