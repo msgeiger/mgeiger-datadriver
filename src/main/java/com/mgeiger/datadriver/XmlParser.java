@@ -14,8 +14,11 @@ import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
 public class XmlParser {
+    
+    private static String workingDir = System.getProperty("user.dir").concat("\\config\\config.xml");
 
-    private static String pathToConfig = "c:\\Xebium\\config\\config.xml";
+    private static String pathToConfig = workingDir;
+    //private static String pathToConfig = "c:\\Xebium\\config\\config.xml";
 
     public static void setPathToConfig(String pathToConfigString) {
         pathToConfig = pathToConfigString;
@@ -111,5 +114,4 @@ public class XmlParser {
             Logger.getLogger(XmlParser.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
 }
