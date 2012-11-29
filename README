@@ -39,9 +39,25 @@ Examples of Date Data Fixture and Database Query Runner Fixture usage with Xebiu
 # Query Runner Fixture
 ---------------------------------------------
 
-|DB Connection                                                                                              |
-|db driver                      |db connect                             |user       |password  |get connect?|
-|oracle.jdbc.driver.OracleDriver|jdbc:oracle:thin:@<DB_URL>:<PORT>:<SID>|<USER_NAME>|<PASSWORD>|true        |
+I switched the db connection configuration to xml.
+Create a config directory in your Xebium base dir, 
+then create an XML file in that directory, paste the following xml snippet in
+that XML file and change the configuration values to match your database configuration.
+
+e.g. c:\Xebium\config\config.xml
+
+<?xml version="1.0"?>
+<database>
+    <use_parser>
+        <parser>true</parser>
+    </use_parser>
+    <credentials>
+        <db_connect>jdbc:oracle:thin:@<YOUR-SERVER>:<PORT>:<ALIAS></db_connect>
+        <db_username><YOUR-USERNAME></db_username>
+        <db_password><YOUR-PASSWORD></db_password>
+        <db_driver>oracle.jdbc.driver.OracleDriver</db_driver>
+    </credentials>
+</database>
 
 |Query Runner Fixture                                                   |
 |sql                                        |column  |run query get int?|
@@ -106,5 +122,3 @@ Installation:
      </dependency>
 
 Then I added the ojdbc.jar in the local ivy repository.
-
-Created XmlParser to set Database Connection variables in a XML file rather than in a script table or fixture.
