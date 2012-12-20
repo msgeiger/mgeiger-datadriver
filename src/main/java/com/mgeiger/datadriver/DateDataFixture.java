@@ -105,6 +105,16 @@ public class DateDataFixture {
 
         return format;
     }
+    
+    public String echoHour() {
+        DateFormat dateFormat = new SimpleDateFormat("hh");
+        Calendar cal = Calendar.getInstance(Locale.ENGLISH);
+        cal.setTime(cal.getTime());
+        cal.add(Calendar.DATE, this.getIncrementHour());
+        String format = dateFormat.format(cal.getTime());
+
+        return format;
+    }
 
     public String minuteDivisibleByFive() {
         int minute = Calendar.getInstance().get(Calendar.MINUTE);
