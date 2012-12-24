@@ -104,7 +104,7 @@ Installation:
 
 10. run mvn -Pfitnesse test
 
-# NOTE: In order to use the Oracle Drivers with the latest version of Xebium, I removed the dependency with system scope and I included the following pieces in the pom.xml file:
+# NOTE: In order to use the Oracle Drivers with the latest version of Xebium, I removed the dependency with system scope and I included the following elements in the pom.xml file:
 
     <repositories>
         <repository>
