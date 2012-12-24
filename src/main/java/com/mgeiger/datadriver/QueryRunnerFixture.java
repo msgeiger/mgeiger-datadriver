@@ -22,8 +22,8 @@ public class QueryRunnerFixture {
     private String column; // Single DB column in query e.g. select <column> from table
     private int numberOfColumns = 1;
     private String columnByIndexString;
-    private List listResultSet;
-    private int columnIndex;
+    private static List listResultSet;
+    private static int columnIndex;
 
     public static Connection setDbConnection() {
         String driver = "oracle.jdbc.driver.OracleDriver";
@@ -71,16 +71,16 @@ public class QueryRunnerFixture {
         this.columnIndex = index;
     }
     
-    public int getColumnIndex() {
-        return this.columnIndex;
+    public static int getColumnIndex() {
+        return columnIndex;
     }
     
-    public String fetchColumnByIndexString() {
-        Iterator<ArrayList> iterator = this.listResultSet.iterator();
+    public static String fetchColumnByIndexString() {
+        Iterator<ArrayList> iterator = listResultSet.iterator();
         String columnValue = null;
 
         if (iterator.hasNext()) {
-            columnValue = iterator.next().get(this.getColumnIndex()).toString();
+            columnValue = iterator.next().get(getColumnIndex()).toString();
         }
         
         return columnValue;
