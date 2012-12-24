@@ -62,9 +62,21 @@ e.g. c:\Xebium\config\config.xml
 |SELECT STRING FROM TABLE WHERE STRING = STRING|<COLUMN>|$STRING_OUTPUT=      |
 
 # fetch data by table column index
-|Query Runner Fixture                                                                      |
-|sql   |number of columns|run query get results?|column index|fetch column by index string?|
-|${SQL}|3                |$RESULTS=              |1           |$COLUMN1=                   |
+|Query Runner Fixture                           |
+|sql   |number of columns|run query get results?|
+|${SQL}|3                |$RESULTS=             |
+
+|Query Runner Fixture                      |
+|column index|fetch column by index string?|
+|0           |$COLUMN0=                    |
+
+|Query Runner Fixture                      |
+|column index|fetch column by index string?|
+|1           |$COLUMN1=                    |
+
+|Query Runner Fixture                      |
+|column index|fetch column by index string?|
+|2           |$COLUMN2=                    |
 
 Installation:
 
