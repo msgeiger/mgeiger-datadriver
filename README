@@ -61,6 +61,11 @@ e.g. c:\Xebium\config\config.xml
 |sql                                           |column  |run query get string?|
 |SELECT STRING FROM TABLE WHERE STRING = STRING|<COLUMN>|$STRING_OUTPUT=      |
 
+# fetch data by table column index
+|Query Runner Fixture                                                                      |
+|sql   |number of columns|run query get results?|column index|fetch column by index string?|
+|${SQL}|3                |$RESULTS=              |1           |$COLUMN1=                   |
+
 Installation:
 
 1. git clone git://github.com/xebia/Xebium
@@ -95,7 +100,7 @@ Installation:
 
 8. cd into Xebium
 
-9. run maven clean install
+9. run mvn clean install
 
 10. run mvn -Pfitnesse test
 
