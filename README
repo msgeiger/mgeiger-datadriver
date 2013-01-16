@@ -78,9 +78,9 @@ e.g. c:\Xebium\config\config.xml
 |column index|fetch column by index string?|
 |2           |$COLUMN2=                    |
 
-|Query Runner Fixture                              |
-|sql                             |run query update?|
-|UPDATE table foo SET column=bar |>=1              |
+|Query Runner Fixture                                |
+|sql                               |run query update?|
+|UPDATE table t SET t.column=value |>=1              |
 
 Installation:
 
