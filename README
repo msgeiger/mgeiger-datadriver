@@ -56,7 +56,6 @@ e.g. c:\Xebium\config\config.xml
 |sql                                        |column  |run query get int?|
 |SELECT INT FROM TABLE WHERE WHERE INT = INT|<COLUMN>|$INT_OUTPUT=      |
 
-
 |Query Runner Fixture                                                         |
 |sql                                           |column  |run query get string?|
 |SELECT STRING FROM TABLE WHERE STRING = STRING|<COLUMN>|$STRING_OUTPUT=      |
