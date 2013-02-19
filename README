@@ -60,22 +60,22 @@ e.g. c:\Xebium\config\config.xml
 |sql                                           |column  |run query get string?|
 |SELECT STRING FROM TABLE WHERE STRING = STRING|<COLUMN>|$STRING_OUTPUT=      |
 
-# fetch data by table column index
+# Fetch column from list by index
 |Query Runner Fixture                           |
-|sql   |number of columns|run query get results?|
-|${SQL}|3                |$RESULTS=             |
+|sql   |number of columns      |run query get list?|
+|${sql}|int <number of columns>|$RESULTS=          |
 
-|Query Runner Fixture                      |
-|column index|fetch column by index string?|
-|0           |$COLUMN0=                    |
+|Query Runner Fixture                                |
+|column index|fetch column from list by index string?|
+|0           |$COLUMN0=                              |
 
-|Query Runner Fixture                      |
-|column index|fetch column by index string?|
-|1           |$COLUMN1=                    |
+|Query Runner Fixture                                |
+|column index|fetch column from list by index string?|
+|1           |$COLUMN1=                              |
 
-|Query Runner Fixture                      |
-|column index|fetch column by index string?|
-|2           |$COLUMN2=                    |
+|Query Runner Fixture                                |
+|column index|fetch column from list by index string?|
+|2           |$COLUMN2=                              |
 
 |Query Runner Fixture                                |
 |sql                               |run query update?|
@@ -103,28 +103,12 @@ Installation:
       <scope>runtime</scope>
     </dependency>
 
-7. Add oracle jdbc dependency to the Xebium package and Xebium/pom.xml file
-
-    <dependency>
-      <groupId>com.oracle</groupId>
-      <artifactId>ojdbc6</artifactId>
-      <version>11.2.0</version>
-      <scope>system</scope>
-      <systemPath>${<path to oracle jdbc dir>}/ojdbc6.jar</systemPath>
-    </dependency>
-
-8. cd into Xebium
-
-9. run mvn clean install
-
-10. run mvn -Pfitnesse test
-
-# NOTE: In order to use the Oracle Drivers with the latest version of Xebium, I removed the dependency with system scope and I included the following elements in the pom.xml file:
+7. Add the oracle jdbc dependency to the Xebium package and Xebium/pom.xml file
 
     <repositories>
         <repository>
             <id>com.oracle</id>
-            <url>file://${java.home}<PATH TO ojdbc.jar FILE></url>
+            <url>file:\\${basedir}\ojdbc6\ojdbc6.jar</url>
         </repository>
     </repositories>
 
@@ -132,6 +116,10 @@ Installation:
         <groupId>com.oracle</groupId>
         <artifactId>ojdbc6</artifactId>
         <version>11.2.0</version>
-     </dependency>
+    </dependency>
 
-Then I added the ojdbc.jar in the local ivy repository.
+8. cd into Xebium
+
+9. run mvn clean install
+
+10. run mvn -Pfitnesse test
