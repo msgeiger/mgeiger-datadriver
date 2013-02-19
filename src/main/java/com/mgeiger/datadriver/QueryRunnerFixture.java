@@ -60,21 +60,21 @@ public class QueryRunnerFixture {
     }
 
     public void setNumberOfColumns(final int count) {
-        this.numberOfColumns = count;
+        numberOfColumns = count;
     }
 
     public int getNumberOfColumns() {
-        return this.numberOfColumns;
+        return numberOfColumns;
     }
-    
+
     public void setColumnIndex(int index) {
-        this.columnIndex = index;
+        columnIndex = index;
     }
-    
+
     public static int getColumnIndex() {
         return columnIndex;
     }
-    
+
     public static String fetchColumnByIndexString() {
         Iterator<ArrayList> iterator = listResultSet.iterator();
         String columnValue = null;
@@ -82,10 +82,10 @@ public class QueryRunnerFixture {
         if (iterator.hasNext()) {
             columnValue = iterator.next().get(getColumnIndex()).toString();
         }
-        
+
         return columnValue;
     }
-    
+
     public int runQueryGetInt() throws SQLException {
         Connection c = QueryRunnerFixture.setDbConnection();
 
@@ -118,7 +118,13 @@ public class QueryRunnerFixture {
         }
     }
 
-    public List runQueryGetResults() throws SQLException {
+    public static String fetchColumnFromListByIndexString() {
+        String columnValue = listResultSet.get(columnIndex).toString();
+
+        return columnValue;
+    }
+
+    public List runQueryGetList() throws SQLException {
         Connection c = QueryRunnerFixture.setDbConnection();
 
         try {
@@ -127,22 +133,46 @@ public class QueryRunnerFixture {
             if (!results.next()) {
                 throw new IllegalStateException("Query must return at lease one row!");
             }
+            List rows = new ArrayList<String>();
+            for (int i = 1; i <= numberOfColumns; i++) //replace 3 with the length of the columns
+            {
+                rows.add(results.getObject(i));
+            }
+            listResultSet = rows;
+            return rows;
+        } finally {
+            c.close();
+        }
+    }
+
+    public List runQueryGetResults() throws SQLException {
+        Connection c = QueryRunnerFixture.setDbConnection();
+
+        try {
+            final PreparedStatement s = c.prepareStatement(sql);
+            final ResultSet results = s.executeQuery();
+
+
+            if (!results.next()) {
+                throw new IllegalStateException("Query must return at lease one row!");
+            }
 
             //ResultSetMetaData metaData = results.getMetaData();
             List rows = new ArrayList();
 
             while (results.next()) {
+                System.out.println("Hello World");
                 List nrow = new ArrayList();
-                for (int i = 1; i <= this.numberOfColumns; i++) //replace 3 with the length of the columns
+                for (int i = 0; i <= numberOfColumns; i++) //replace 3 with the length of the columns
                 {
                     nrow.add(results.getObject(i));
                 }
 
                 rows.add(nrow);
             }
-            
+
             //Make this available to Fitnesse
-            this.listResultSet = rows;
+            listResultSet = rows;
 
             return rows;
         } finally {
